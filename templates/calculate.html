@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculate Salary</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h2>Calculate Salary</h2>
+  {% if error %}
+  <p style="color:red;">{{ error }}</p>
+  {% endif %}
+  {% if salary is not none %}
+  <p>Salary: ₹{{ "%.2f"|format(salary) }}</p>
+  {% endif %}
+  <form method="POST">
+    <input type="number" name="emp_id" placeholder="Employee ID" required><br>
+    <input type="number" name="hours" step="0.01" placeholder="Hours Worked" required><br>
+    <button type="submit">Calculate</button>
+  </form>
+  <a href="{{ url_for('employee_list') }}">Back to list</a>
+</body>
+</html>
